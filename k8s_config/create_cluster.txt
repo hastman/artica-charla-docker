@@ -1,1 +1,1 @@
-kops create cluster --name=kops-pre.articatelemedicina.com --state=s3://kubernetes-pre-artica --zones=eu-west-1a --node-count=2 --node-size=t2.small --dns-zone=kops-pre.articatelemedicina.com --vpc=vpc-5bc7f43e --network-cidr=10.0.0.0/16 --master-size=t2.medium
+kops create cluster --name=kops --state=s3://kopstests --zones=eu-west-1a --node-count=2 --node-size=t2.small --dns-zone=kops-test.com --vpc=vpc-9basc71as2a43e --network-cidr=10.0.0.0/16 --master-size=t2.medium
