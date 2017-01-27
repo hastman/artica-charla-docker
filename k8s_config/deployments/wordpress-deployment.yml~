@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+        name: wordrpress-deploy
+spec:
+        replicas: 2
+        template:
+		metadata:
+                	labels:
+                        	app: wordpress
+                                label: wordpress
+        
+	containers:
+	      - image: wordpress:4.6.1-apache
+		name: wordpress
+		env:
+		- name: WORDPRESS_DB_HOST
+		  value: wordpress-mysql
+		- name: WORDPRESS_DB_PASSWORD
+		  valueFrom:
+		    secretKeyRef:
+		      name: mysql-pass
+		      key: password.txt
+		ports:
+		- containerPort: 80
+		  name: wordpress
+		volumeMounts:
+		- name: wordpress-persistent-storage
+		  mountPath: /var/www/html
+	      volumes:
+	      	- name: wordpress-persistent-storage
+		  emptyDir: {}
+
+
+
+

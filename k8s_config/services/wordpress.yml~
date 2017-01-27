@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+        name: wordpress
+spec:
+        ports:
+                - port: 31000
+                  nodePort: 31000
+                  targetPort: tipos-port
+                  protocol: TCP
+        selector:
+                app: artica-uno-tipos
+        type: NodePort
+
